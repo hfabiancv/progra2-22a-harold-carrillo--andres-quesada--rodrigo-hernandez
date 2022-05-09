@@ -4,7 +4,11 @@ Proyecto 1: Criptoaritmo, del curso Programacion 2 2022-I
 # Análisis
 
 ## Entradas
-formato == char[] + char[] = char[]
+### Formato: 
+``` 
+char[] + char[] = char[] 
+```
+
 - Son del alfabeto inglés.
 - Solo caracteres ASCII
 - Mayus y minus.
