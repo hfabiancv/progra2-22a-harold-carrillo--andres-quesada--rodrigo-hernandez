@@ -1,7 +1,7 @@
-1 solution(s) found
-
     42326 
   +   842 
   + 83984 
    ------ 
  = 127152 
+
+1 solution(s) found

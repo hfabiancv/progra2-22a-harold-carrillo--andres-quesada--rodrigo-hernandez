@@ -31,11 +31,11 @@ char[] + char[] = char[]
 ### Formato:
 
 ```  
- == int[]:
+           int[]
          + int[]
-    -------------- ->(cant de “-”  == tam en dígitos del resultado)
+    -------------- -> (cant de “-”  == tam en dígitos del resultado)
            Int[]
-“_ solution(s) found”
+ _ solution(s) found
 ```
 
 - Errores: “invalid input”

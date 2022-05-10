@@ -1,5 +1,3 @@
-5 solution(s) found
-
     6268 
   + 6258 
   +  258 
@@ -29,3 +27,5 @@
   +  684
    ----- 
  = 16042  
+
+5 solution(s) found
