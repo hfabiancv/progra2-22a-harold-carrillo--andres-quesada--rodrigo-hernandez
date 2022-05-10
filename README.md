@@ -1,48 +1,78 @@
 # progra2-22a-harold-carrillo--andres-quesada--rodrigo-hernandez
 Proyecto 1: Criptoaritmo, del curso Programacion 2 2022-I
 
-# Análisis
+* * *
 
-## Entradas
-### Formato: 
+# Analysis
+
+[Cryptarithms][1] are puzzles where letters stand for different digits in an arithmetic problem. The problem  
+is usually to figure out which letters stand for which digits.  
+Often it helps to write equations using the letters. Algebra can then be used to solve for the letters.  
+Sometimes you can narrow the possibilities for a given letter down to a small number of choices, and  
+you just have to try them and see if there is a way to get a solution.  
+  
+In cryptarithm each letter represent a unique value from 0 to 9, so it cannot have more than 10 different letters  
+A program is required that is capable of solving cryptoarithms in which only additions are performed.  
+It is necessary that the program can find all possible solutions, if any, of the cryptoarithm problems given to it.  
+The program must be able to solve cryptarithms with as many digits as possible, and when solutions are found,  
+they must be shown in the standard output with their respective indicator of the number of solutions. 
+
+## Input
+
+### Format: 
+
 ``` 
 char[] + char[] = char[] 
 ```
 
-- Son del alfabeto inglés.
-- Solo caracteres ASCII
-- Mayus y minus.
-- No hace falta que sean palabras válidas..
+### Requirements
 
-## Desarrollo
-- Varias posibles soluciones.
-- Cada char tiene un valor distinto entre [0,9].
-- Basado en los 8 tipos de instrucción procedimental.
-- Si tengo x valores fijos y z valores variables, entonces… countCharsVariables, cantNumNoAsignados->permutación sin repetición. Más de una solución
+- English alphabet characters.
+- ASCII characters only.
+- Uppercase and lowercase are different.
+- Doesn't need to be valid words.
+- Can't have more than ten distinct letters
 
-### Reglas básicas en la resolución de problemas de aritmética verbal:
-1. La suma de la misma letra un numero par de veces resulta en un número par. A+A=2A(par)
-2. Cada letra es un número diferente.
-3. Si A + B == A, cuando esta en unidades B es definitivamente 0, si no entonces es 0 ó 9.
-4. El acarreo máximo es de n+1, siendo n el tamaño de los nums que están en la suma.
-5. Si la suma de dos núms de n dígitos es un num de n+1 dígitos entonces el dígito más a la izquierda del resultado es un 1.
+## Development
 
-## Salidas 
-### Formato:
+- Several possible solutions.
+- Each letter (char) has a different value between [0,9].
+- Based on the 8 procedural instruction types.
+- To get the amount of all possible solutions permutation without repetition is needed
+
+### Basic rules for solving verbal arithmetic problems
+
+1. Adding the same letter an even number of times results in an even number. A+A=2A(even)
+2. If A + B == A, when it is in units B it is definitely 0, if not then it is 0 or 9.
+3. The maximum carry is n-1, where n is the maximum size of all the numbers that are in the sum.
+4. The maximum carry is n-1, where n is the amount of numbers in the sum.
+
+## Output 
+
+### Format
 
 ```  
+If there is more than 10 different letters then
+
+  invalid input
+
+Else
            int[]
          + int[]
-    -------------- -> (cant de “-”  == tam en dígitos del resultado)
+    -------------- 
            Int[]
  _ solution(s) found
 ```
 
-- Errores: “invalid input”
-- No puede tener más de diez chars distintos
-- Solo sumas.
+### Requirements:
 
-# Diseño
+- Only sums.
+- Can show more than one solution if there are any.
+- Show "invalid input" if there are more than 10 different letters
+
+* * *
+
+# Design
 
 ```
 Cryptarithms Library
@@ -135,3 +165,9 @@ Cryptarithms Library
     Print " -----"
     Print values[amount of words - 1]
   ```
+
+* * *
+
+# References
+
+[1]: <https://www.cs.cornell.edu/andru/mathclub/handouts/2015/03-04-soln.pdf> "Cryptarithms"
