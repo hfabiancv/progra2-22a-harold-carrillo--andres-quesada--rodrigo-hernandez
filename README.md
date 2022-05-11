@@ -188,9 +188,21 @@ Words must always be separated by at least one space.
 Standard input
 
 ## Examples of program execution
-
+Example 1 - Upon executing the program with no parameters:
+“Please input the words followed by their sum:”
+User Input = SEND + MORE = MONEY
+Example 2 – If the program is executed passing parameters:
+For example from “textfile.txt”:
+ANDRES + FABIAN = RODRIGO
 
 ### Results
+Example 1 - 9567
+          + 1085
+           -----
+         = 10652
+
+1 solution(s) found
+Example 2 – invalid input
 
 * * *
 
