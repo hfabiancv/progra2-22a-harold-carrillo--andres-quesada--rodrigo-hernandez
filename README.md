@@ -76,6 +76,8 @@ Else
 
 # Design
 
+![Program design](/assets/imgs/ProgramDesign.png "Program design")  
+
 ```
 Cryptarithms Library
 
