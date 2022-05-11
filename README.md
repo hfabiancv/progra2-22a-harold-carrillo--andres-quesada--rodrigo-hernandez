@@ -11,7 +11,7 @@ Often it helps to write equations using the letters. Algebra can then be used to
 Sometimes you can narrow the possibilities for a given letter down to a small number of choices, and  
 you just have to try them and see if there is a way to get a solution.  
   
-In cryptarithm each letter represent a unique value from 0 to 9, so it cannot have more than 10 different letters  
+In a cryptarithm each letter represents a unique value from 0 to 9, so it cannot have more than 10 different letters.  
 A program is required that is capable of solving cryptoarithms in which only additions are performed.  
 It is necessary that the program can find all possible solutions, if any, of the cryptoarithm problems given to it.  
 The program must be able to solve cryptarithms with as many digits as possible, and when solutions are found,  
@@ -22,7 +22,7 @@ they must be shown in the standard output with their respective indicator of the
 ### Format: 
 
 ``` 
-char[] + char[] = char[] 
+SEND + MORE = MONEY 
 ```
 
 ### Requirements
@@ -57,11 +57,13 @@ If there is more than 10 different letters then
   invalid input
 
 Else
-           int[]
-         + int[]
-    -------------- 
-           Int[]
- _ solution(s) found
+           
+    9567 
+  + 1085 
+   ----- 
+ = 10652 
+
+1 solution(s) found
 ```
 
 ### Requirements:
@@ -165,6 +167,30 @@ Cryptarithms Library
     Print " -----"
     Print values[amount of words - 1]
   ```
+
+* * * 
+
+# User manual
+
+## Call instructions
+
+Program can be called with:
+
+```
+/bin cryptarithm.c textfile.txt  
+/bin cryptarithm.c < /tests testname.txt
+/bin cryptarithm.c parameter1 parameter2 parameter3 ... parameter n
+```
+
+## Parameters
+Minimum of 3 strings, i.e. two adding words and the solution (output).  
+Words must always be separated by at least one space.  
+Standard input
+
+## Examples of program execution
+
+
+### Results
 
 * * *
 
