@@ -181,9 +181,9 @@ Cryptarithms Library
 Program can be called with:
 
 ```
-/bin cryptarithm.c textfile.txt  
-/bin cryptarithm.c < /tests testname.txt
-/bin cryptarithm.c parameter1 parameter2 parameter3 ... parameter n
+bin/cryptarithm textfile.txt  
+bin/cryptarithm < tests/testname.txt
+bin/cryptarithm
 ```
 
 ## Parameters
