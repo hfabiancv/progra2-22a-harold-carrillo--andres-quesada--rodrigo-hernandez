@@ -254,7 +254,7 @@ Example 1:
 Example 2: 
 
 ```
- 0 solution(s) found   
+ invalid input   
 ```
 
 * * *
