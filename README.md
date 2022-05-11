@@ -78,6 +78,8 @@ Else
 
 ![Program design](/assets/imgs/ProgramDesign.png "Program design")  
 
+## Algorithm in pseudocode
+
 ```
 Cryptarithms Library
 
