@@ -115,6 +115,19 @@ Cryptarithms Library
     Else
       return ERROR_EXCEEDED_UNIQUE_CHARS
 
+  Procedure Find Digits values
+    Create index as amount of unique chars - 1
+    While Digits are unique == false
+	    Change values[index] as values[index] + 1
+		  If values[index] == 10 then
+		    Carry(index - 1)
+		  
+  Function Carry
+    values[index]++
+	  If values[index] == 10	
+		  values[index] = 0
+		  Carry(index - 1)
+
   Procedure Count unique characters
     If words then
       letters[0] = word[0][0];
