@@ -280,7 +280,7 @@ Examples if the program is executed passing parameters:
 ### Results
 
 Examples upon executing the program with no parameters  
-
+  
 1.  
 
 ```
@@ -297,7 +297,8 @@ Examples upon executing the program with no parameters
 ```invalid input```
 
 
-Examples if the program is executed passing parameters: 
+Examples if the program is executed passing parameters:  
+  
 1.  
 
 ```
