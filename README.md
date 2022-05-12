@@ -115,19 +115,6 @@ Cryptarithms Library
     Else
       return ERROR_EXCEEDED_UNIQUE_CHARS
 
-  Procedure Find Digits values
-    Create index as amount of unique chars - 1
-    While Digits are unique == false
-	    Change values[index] as values[index] + 1
-		  If values[index] == 10 then
-		    Carry(index - 1)
-		  
-  Function Carry
-    values[index]++
-	  If values[index] == 10	
-		  values[index] = 0
-		  Carry(index - 1)
-
   Procedure Count unique characters
     If words then
       letters[0] = word[0][0];
@@ -163,8 +150,18 @@ Cryptarithms Library
         Chnage result as result * actual num
     return result
 
-  Procedure Find Digit Values
-    
+  Procedure Find Digits values
+    Create index as amount of unique chars - 1
+    While Digits are unique == false
+      Change values[index] as values[index] + 1
+        If values[index] == 10 then
+          Carry(index - 1)
+		  
+  Function Carry
+    values[index]++
+      If values[index] == 10	
+        values[index] = 0
+	   Carry(index - 1)
 
   Function Convert Digits To Value    
     For value = 0; value < amount of words; value++
@@ -175,7 +172,7 @@ Cryptarithms Library
   Function Get Char Position
     If array then
       For index = 0; index < array length; index++ 
-        If array[index] == letter
+        If array[index] == letter then
           return index
     return -1; 
 
@@ -183,14 +180,14 @@ Cryptarithms Library
     Create sum as 0
     For index = 0; index < amount of words - 1; index++
       sum += values[index]
-    If sum == values[amount of words - 1]
+    If sum == values[amount of words - 1] then
       return true
     return false
 
   Function Get Max Num Size
     Create max size as strlen(words[0])
     For index = 1; index < amount of words; index++
-      if max size < strlen(words[index])
+      If max size < strlen(words[index]) then
         max size = strlen(words[index])
     return max size
   
@@ -258,17 +255,33 @@ The last word must be accompanied by an "=" followed by a blank space.
   
 ## Examples of program execution
 
-Example 1 - Upon executing the program with no parameters:  
-“Please input the words followed by their sum:”  
-User Input = SEND + MORE = MONEY  
+Examples upon executing the program with no parameters:  
+1. “Please input the words followed by their sum:”  
+User Input = ```SEND + MORE = MONEY```
+
+2. “Please input the words followed by their sum:” 
+User Input = ```ABCD + EFGH + IJKL + LMNO = PQRST```
   
-Example 2 – If the program is executed passing parameters:  
-For example from “textfile.txt”:  
-ANDRES + FABIAN = RODRIGO  
-  
+Examples if the program is executed passing parameters:  
+1. For example from “textfile1.txt”:  
+
+```ANDRES + FABIAN = RODRIGO ```
+
+2. For example from “textfile2.txt”:  
+
+```
+  ONE 
++ TWO 
++ TWO 
++ THREE 
++ THREE 
+= ELEVEN
+```
+
 ### Results
 
-Example 1:
+Examples upon executing the program with no parameters
+1.
 
 ```
     9567  
@@ -279,10 +292,30 @@ Example 1:
  1 solution(s) found 
 ```
 
-Example 2: 
+2.  
+
+```invalid input```
+
+
+Examples if the program is executed passing parameters: 
+1.  
 
 ```
  invalid input   
+```
+
+2.
+
+```
+      391
+  +   803
+  +   803
+  + 84611
+  + 84611
+   ------
+ = 171219
+ 
+ 1 solution(s) found
 ```
 
 * * *
