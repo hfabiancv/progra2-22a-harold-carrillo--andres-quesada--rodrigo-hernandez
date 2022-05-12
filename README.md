@@ -56,13 +56,13 @@ SEND + MORE = MONEY
 
 ### Format
 
-```  
-If there is more than 10 different letters then
+If there is more than 10 different letters then  
 
-  invalid input
+``` invalid input ```
 
-Else
-           
+Else  
+
+```           
     9567 
   + 1085 
    ----- 
@@ -150,8 +150,18 @@ Cryptarithms Library
         Chnage result as result * actual num
     return result
 
-  Procedure Find Digit Values
-    
+  Procedure Find Digits values
+    Create index as amount of unique chars - 1
+    While Digits are unique == false
+      Change values[index] as values[index] + 1
+        If values[index] == 10 then
+          Carry(index - 1)
+		  
+  Function Carry
+    values[index]++
+      If values[index] == 10	
+        values[index] = 0
+	   Carry(index - 1)
 
   Function Convert Digits To Value    
     For value = 0; value < amount of words; value++
@@ -162,7 +172,7 @@ Cryptarithms Library
   Function Get Char Position
     If array then
       For index = 0; index < array length; index++ 
-        If array[index] == letter
+        If array[index] == letter then
           return index
     return -1; 
 
@@ -170,14 +180,14 @@ Cryptarithms Library
     Create sum as 0
     For index = 0; index < amount of words - 1; index++
       sum += values[index]
-    If sum == values[amount of words - 1]
+    If sum == values[amount of words - 1] then
       return true
     return false
 
   Function Get Max Num Size
     Create max size as strlen(words[0])
     For index = 1; index < amount of words; index++
-      if max size < strlen(words[index])
+      If max size < strlen(words[index]) then
         max size = strlen(words[index])
     return max size
   
@@ -221,11 +231,30 @@ Cryptarithmetic File
       Read Word
 
 ```
-  
 
 * * * 
 
 # User manual
+
+## Scope
+
+This manual is intended for users that are using the Cryptarithmetic program.
+
+The following sub-sections contain all of the documentation to call the program, as well as some examples and results.
+
+## Overview
+
+### What is the Cryptarithmetic program
+
+The Cryptarithmetic program is a solution for solving an special kind of mathematic problems called cryptarithms.
+
+Allows to solve cryptoarithms in a much easier and faster way than the traditional way.
+
+### Features
+
+* It allows to solve cryptoarithms in which there are n number of words.
+* It finds each of the solutions to the cryptoarithm given to it, and prints them to the standard output.
+* Allows to work with as many digits as possible
 
 ## Call instructions
   
@@ -242,20 +271,35 @@ bin/cryptarithmetic
 Minimum of 3 strings, i.e. two adding words and the solution (output).  
 After the first word the rest of the words must be accompanied by a + and a blank space, except for the last word.  
 The last word must be accompanied by an "=" followed by a blank space.  
-  
+
 ## Examples of program execution
 
-Example 1 - Upon executing the program with no parameters:  
-“Please input the words followed by their sum:”  
-User Input = SEND + MORE = MONEY  
-  
-Example 2 – If the program is executed passing parameters:  
-For example from “textfile.txt”:  
-ANDRES + FABIAN = RODRIGO  
-  
-### Results
+Examples upon executing the program with no parameters:  
+1. “Please input the words followed by their sum:”  
+User Input = ```SEND + MORE = MONEY```
 
-Example 1:
+2. “Please input the words followed by their sum:” 
+User Input = ```ABCD + EFGH + IJKL + LMNO = PQRST```
+  
+Examples if the program is executed passing parameters:  
+
+1. For example from “textfile1.txt”:  ```ANDRES + FABIAN = RODRIGO ```
+
+2. For example from “textfile2.txt”:  
+```
+  ONE 
++ TWO 
++ TWO 
++ THREE 
++ THREE 
+= ELEVEN
+```
+
+## Results  
+
+<details>
+    <summary>Examples upon executing the program with no parameters</summary>
+1.  
 
 ```
     9567  
@@ -263,17 +307,44 @@ Example 1:
    -----  
  = 10652  
   
- 1 solution(s) found 
+ 1 solution(s) found
 ```
+  
+2.  
 
-Example 2: 
+```invalid input```
+</details>
+
+
+
+
+
+<details>
+    <summary>Examples if the program is executed passing parameters</summary>
+1.  
 
 ```
  invalid input   
 ```
 
+2.  
+
+```
+      391
+  +   803
+  +   803
+  + 84611
+  + 84611
+   ------
+ = 171219
+ 
+ 1 solution(s) found
+```
+</details>
+  
+
+
 * * *
 
-# References
 
 [1]: <https://www.cs.cornell.edu/andru/mathclub/handouts/2015/03-04-soln.pdf> "Cryptarithms"
