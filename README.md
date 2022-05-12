@@ -263,12 +263,11 @@ User Input = ```SEND + MORE = MONEY```
 User Input = ```ABCD + EFGH + IJKL + LMNO = PQRST```
   
 Examples if the program is executed passing parameters:  
-1. For example from “textfile1.txt”:  
+1.For example from “textfile1.txt”:  
 
 ```ANDRES + FABIAN = RODRIGO ```
 
-2. For example from “textfile2.txt”:  
-
+2.For example from “textfile2.txt”:  
 ```
   ONE 
 + TWO 
@@ -280,8 +279,9 @@ Examples if the program is executed passing parameters:
 
 ### Results
 
-Examples upon executing the program with no parameters
-1.
+Examples upon executing the program with no parameters  
+
+1.  
 
 ```
     9567  
@@ -291,7 +291,7 @@ Examples upon executing the program with no parameters
   
  1 solution(s) found 
 ```
-
+  
 2.  
 
 ```invalid input```
@@ -304,7 +304,7 @@ Examples if the program is executed passing parameters:
  invalid input   
 ```
 
-2.
+2.  
 
 ```
       391
