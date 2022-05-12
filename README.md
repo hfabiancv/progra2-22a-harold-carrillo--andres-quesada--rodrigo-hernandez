@@ -131,10 +131,10 @@ Cryptarithms Library
     return -1
     
   Function Letter is Unique
-	  For index = 0; index < amount of unique chars; index++
-	    If(letter == letters[index])
-		    return false
-	  return true
+    For index = 0; index < amount of unique chars; index++
+      If letter == letters[index] then
+        return false
+    return true
 
   Function Words is valid
     If amount of unique chars <= 10 then
@@ -193,14 +193,14 @@ Cryptarithms Library
   
 ```
 Cryptarithmetic File
-
+ 
   Procedure main
-	 	Create words as Create Matrix
-		Read Words(words)
-		If(words)
-			Solve Cryptarithm(words)
-		Destroy Matrix(words)
-	
+    Create words as Create Matrix
+    Read Words(words)
+    If words then
+     Solve Cryptarithm(words)
+    Destroy Matrix(words)
+
   Procedure Create Matrix
     Create matrix and allocate the corresponding memory using calloc
       If matrix is True
