@@ -247,7 +247,7 @@ int factorial(int n){
 }
 int amount_of_unique_characters(void){}//debería recibir
 
-bool letter_is_unique(int, char, char[]){
+bool letter_is_unique(int amount_of_unique_chars, char letter, char letters []){
 }
 
   //Procedure Fill digits values
