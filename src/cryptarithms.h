@@ -106,10 +106,7 @@ int get_Max_Num_Size(char [], int);
  * @param int array Values
  * @param Amount of words
  */
-<<<<<<< HEAD
 void print_Solution(int [], int);
-=======
 void print_Solution(int [], int);
 
 #endif
->>>>>>> 43955cbbeb326ca882a0892b02f5bea156e798b6

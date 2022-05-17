@@ -248,7 +248,6 @@ int factorial(int n){
 int amount_of_unique_characters(char characters[]){
 }
 
-<<<<<<< HEAD
 bool letter_is_unique(char letter, char letters[]){
   int letter_counter=amount_of_unique_characters(letters);
   for(int index=0;index< letter_counter; index++){
@@ -257,9 +256,6 @@ bool letter_is_unique(char letter, char letters[]){
     }
   }
   return true;
-=======
-bool letter_is_unique(int amount_of_unique_chars, char letter, char letters []){
->>>>>>> 43955cbbeb326ca882a0892b02f5bea156e798b6
 }
 
   //Procedure Fill digits values
