@@ -93,6 +93,4 @@ int get_Max_Num_Size(char [], int);
  * @param int array Values
  * @param Amount of words
  */
-void print_Solution(int [], int)
-
-#endif
+void print_Solution(int [], int);

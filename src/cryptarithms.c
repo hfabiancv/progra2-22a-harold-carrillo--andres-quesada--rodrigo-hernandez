@@ -233,7 +233,7 @@ int permutation(int total_amount, unsigned int used_amount){
   //Function Factorial
     //Create result as 1;
     //for actual num = 2; actual num <= n; ++i
-        //Chnage result as result * actual num
+        //Change result as result * actual num
     //return result
 int factorial(int n){
   if(n>=0){
@@ -245,9 +245,17 @@ int factorial(int n){
   }
   //else return ERROR
 }
-int amount_of_unique_characters(void){}//debería recibir
+int amount_of_unique_characters(char characters[]){
+}
 
-bool letter_is_unique(int, char, char[]){
+bool letter_is_unique(char letter, char letters[]){
+  int letter_counter=amount_of_unique_characters(letters);
+  for(int index=0;index< letter_counter; index++){
+    if(letter==letters[index]){
+      return false;
+    }
+  }
+  return true;
 }
 
   //Procedure Fill digits values
