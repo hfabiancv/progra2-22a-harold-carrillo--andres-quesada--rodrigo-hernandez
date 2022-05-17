@@ -1,5 +1,6 @@
 #ifndef CRYPTARITHMS_H
 #define CRYPTARITHMS_H
+#include <stdbool.h>
 
 /**
  * @brief
