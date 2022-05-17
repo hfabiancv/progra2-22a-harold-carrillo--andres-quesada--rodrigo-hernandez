@@ -99,6 +99,11 @@ Cryptarithms Library
 //Cryptarithms Library
 #include "cryptarithms.h"
 
+
+int Solve_Cryptarithm(void){
+
+  return 0;
+}
   //Procedure Solve Cryptarithm
     //Create max unique elements = 10
     //Create letters as an array of chars with size max unique elements
@@ -139,14 +144,31 @@ Cryptarithms Library
       //return true
     //return false
 
+bool Words_is_valid(int amount_unique_chars){
+  if(amount_unique_chars <= 10){
+    return true;
+  }
+  return false;
+}
+
   //Function Permutation
     //return factorial(n) / factorial (n - r)
+int Permutation(int total_amount, unsigned int used_amount){
+  return (factorial(total_amount) / factorial(total_amount - used_amount));
+}
 
   //Function Factorial
     //Create result as 1;
     //for actual num = 2; actual num <= n; ++i
         //Chnage result as result * actual num
     //return result
+int Factorial(int n){
+  int result = 1;
+  for(int actual_num = 2; actual_num <= n; ++actual_num){
+    result *= actual_num;
+  }
+  return result;
+}
 
   //Procedure Fill digits values
     
