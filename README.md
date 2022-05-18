@@ -108,9 +108,11 @@ Cryptarithms Library
         Create values as an array of amount words 
         Convert Digits To Value(*values, *digit values, amount of words) 
         If Values Are Valid then
-          Create max num size as Get Max Num Size
-          Print Solution(amount of words, values, max num size)
+          Create max word length as Get Max Word Length
+          Print Solution(amount of words, values, max word length)
           solutions++
+      Print solutions
+      Print " solution(s) found"
       return ERROR_SUCCESS
     Else
       return ERROR_EXCEEDED_UNIQUE_CHARS
@@ -147,21 +149,21 @@ Cryptarithms Library
   Function Factorial
     Create result as 1;
     for actual num = 2; actual num <= n; ++i
-        Chnage result as result * actual num
+        Change result as result * actual num
     return result
 
   Procedure Find Digits values
     Create index as amount of unique chars - 1
     While Digits are unique == false
-      Change values[index] as values[index] + 1
-        If values[index] == 10 then
-          Carry(index - 1)
+      Change digit_values[index] as digit_values[index] + 1
+        If digit_values[index] == 10 then
+          Carry(digit_values*, index - 1)
 		  
   Function Carry
-    values[index]++
-      If values[index] == 10	
-        values[index] = 0
-	   Carry(index - 1)
+    digit_values[index]++
+      If digit_values[index] == 10	
+        digit_values[index] = 0
+	      Carry(digit_values*, index - 1)
 
   Function Convert Digits To Value    
     For value = 0; value < amount of words; value++
@@ -170,8 +172,9 @@ Cryptarithms Library
         values[value] = (values[value] * 10) + digit values[Get char position(*letters, word[value][digit])]
 
   Function Get Char Position
-    If array then
-      For index = 0; index < array length; index++ 
+    If letters then
+      Create letters length as strlen(letters)
+      For index = 0; index < letters length; index++ 
         If array[index] == letter then
           return index
     return -1; 
@@ -184,7 +187,7 @@ Cryptarithms Library
       return true
     return false
 
-  Function Get Max Num Size
+  Function Get Max Word Length
     Create max size as strlen(words[0])
     For index = 1; index < amount of words; index++
       If max size < strlen(words[index]) then
@@ -196,7 +199,7 @@ Cryptarithms Library
     For index = 1; index < amount of words - 1; index++
       Print " + "
       Print values[index]
-    For counter = 0; counter < max num size; counter++
+    For counter = 0; counter < max word length; counter++
       Print " - "
     Print values[amount of words - 1]
 ```  
