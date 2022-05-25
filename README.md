@@ -93,7 +93,7 @@ Else
 ## Algorithm in pseudocode
 
 ```
-Cryptarithms Library
+cryptarithms.c
 
   Procedure Solve Cryptarithm
     Create error as ERROR_SUCCESS
@@ -248,33 +248,85 @@ Cryptarithms Library
 ```  
   
 ```
-Cryptarithmetic File
+cryptarithmetic.c
  
   Procedure main
-    Create struct array array
-    Array init(&array)
-    Read Values(&array)
+    Create struct matrix matrix
+    Array init(&matrix)
+    Read Values(&matrix)
     If error == EXIT SUCCESS then
-     Solve Cryptarithm(array.elements, array.count)
-    Array Uninit(&array)
+     Solve Cryptarithm(matrix.elements, matrix.count)
+    matrix Uninit(&matrix)
     return error
 
   Procedure Read Values
-    Create value as an char array of size 21
+    Create value as an char matrix of size 21
     Create error as EXIT SUCCESS
     If value != NULL then
       If there is data
         Read value
-        Array Append(values, value)
+        matrix Append(values, value)
       While there is data
         Read value
-        Array append(values, value)
+        matrix append(values, value)
       If there is data
         Read values
-        Array append(values ,value)
+        matrix append(values ,value)
     Else
       Change error as EXIT FAILURE
     return error
+```
+  
+```
+matrix.c
+
+  Procedure matrix Init
+    Change matrix->count as 0
+    Change matrix->capacity as INITIAL_CAPACITY
+    Change matrix->elements as Create Matrix
+    If matrix->elements == NULL
+      Change matrix capacity as 0
+
+  Procedure matrix Uninit
+    Destroy Matrix(matrix->elements, matrix->capacity)
+    Change matrix->count as 0
+    Change matrix->capacity as 0
+
+  Procedure Create Matrix
+    Create matrix as an matrix of rows
+    If matrix then
+      For row = 0; row < rows; row++
+        Create matrix[row] as an matrix of cols
+        If matrix[row] == NULL
+          Destroy matrix(matrix, rows)
+          return NULL
+    return matrix
+
+  Procedure Destroy Matrix
+    If matrix != NULL then
+      For row = 0; row < rows; row++
+        free(matrix[row])
+      free(matrix) 
+      
+  Procedure matrix Append
+    If matrix->count == matrix->capacity then
+      Increase Capacity(matrix)
+    Create element length as strlen(element)
+    For index= 0; index < element_length; index++
+      Change matrix->elements[matrix->count][index] as element[index]
+    Change matrix->count as matrix->count + 1
+
+  Procedure increase capacity
+    Create new capacity as INCREASE_FACTOR * matrix->capacity
+    Create new elements as Create Matrix
+    If new elements != NULL then
+      For row = 0; row < matrix->count; row++
+        Create element length as strlen(matrix->elements[row])
+        For column = 0; column < element length; column++
+          Change new elements[row][column] as matrix->elements[row][column]
+      Destroy Matrix
+      matrix->elements = new elements
+      matrix->capacity = new capacity
 ```
 
 * * *

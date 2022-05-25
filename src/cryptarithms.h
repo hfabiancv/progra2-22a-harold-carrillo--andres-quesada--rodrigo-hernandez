@@ -6,7 +6,6 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-
 #include <inttypes.h>
 
 enum error_t{
@@ -138,8 +137,6 @@ uint64_t get_max_word_length(char** words, const uint64_t amount_words);
 enum error_t print_solution(const int* values, const uint64_t amount_words,
 const uint64_t max_word_length);
 
-
 void initialize_as_zero(int* array, uint64_t array_size);
-
 
 #endif
