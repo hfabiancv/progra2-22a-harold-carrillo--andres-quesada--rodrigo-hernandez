@@ -207,8 +207,9 @@ Cryptarithms Library
           Change values[value] as (values[value] * 10) + digit values[Get char position(letters, word[value][digit])]
 
   Function Get Char Position
-    If array then
-      For index = 0; index < array length; index++ 
+    If letters then
+      Create letters length as strlen(letters)
+      For index = 0; index < letters length; index++ 
         If array[index] == letter then
           return index
     return -1

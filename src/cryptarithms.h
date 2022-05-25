@@ -2,6 +2,11 @@
 #define CRYPTARITHMS_H
 
 #include <stdbool.h>
+#include <stdlib.h>
+
+enum error_t{
+  ERROR_SUCCESS = EXIT_SUCCESS,,
+};
 
 /**
  * @brief Finds the solution of a given cryptarithm
@@ -61,14 +66,19 @@ void find_Digits_Values(int);
 
 /**
  * @brief
- * @param int array Values
+ * @param digit_values
+ * @param index
  * @return
  */
 void carry(int []);
 
 /**
  * @brief
- * @param
+ * @param amount_words
+ * @param values
+ * @param digit_values
+ * @param letters
+ * @param words
  * @return
  */
 void convert_Digits_To_Value(void);
