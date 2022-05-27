@@ -2,19 +2,10 @@
 
 # Compiler and tool flags
 CC=gcc
-XC=g++
-DEFS=
-CSTD=-std=gnu11
-XSTD=-std=gnu++11
-FLAG=
-FLAGS=$(strip -Wall -Wextra $(FLAG) $(DEFS))
-FLAGC=$(FLAGS) $(CSTD)
-FLAGX=$(FLAGS) $(XSTD)
-LIBS=
+CFLAGS=-Wall -Wextra -std=c11
 LINTF=-build/header_guard,-build/include_subdir
 LINTC=$(LINTF),-readability/casting
 LINTX=$(LINTF),-build/c++11,-runtime/references
-ARGS=
 
 # Directories
 BIN_DIR=bin
@@ -46,42 +37,54 @@ TESTOUT=$(TESTINF:$(TST_DIR)/input%.txt=$(OBJ_DIR)/output%.txt)
 INCLUDE=$(DIRS:%=-I%)
 DEPENDS=$(OBJECTS:%.o=%.d)
 IGNORES=$(BIN_DIR) $(OBJ_DIR) $(DOC_DIR)
-EXEFILE=$(BIN_DIR)/$(APPNAME)
+EXEFILE=$(BIN_DIR)/cryptarithmetic
 EXEARGS=$(strip $(EXEFILE) $(ARGS))
 LD=$(if $(SOURCEC),$(CC),$(XC))
 
 # Targets
 default: debug
-all: doc lint memcheck helgrind test
-debug: FLAGS += -g
-debug: $(EXEFILE)
-release: FLAGS += -O3 -DNDEBUG
+debug: CFLAGS += -g
+debug: all
+release: CFLAGS += -O3 -DNDEBUG
 release: $(EXEFILE)
-asan: FLAGS += -fsanitize=address -fno-omit-frame-pointer
+asan: CFLAGS += -fsanitize=address -fno-omit-frame-pointer
 asan: debug
-msan: FLAGS += -fsanitize=memory
+msan: CFLAGS += -fsanitize=memory
 msan: CC = clang
 msan: XC = clang++
 msan: debug
-tsan: FLAGS += -fsanitize=thread
+tsan: CFLAGS += -fsanitize=thread
 tsan: debug
-ubsan: FLAGS += -fsanitize=undefined
+ubsan: CFLAGS += -fsanitize=undefined
 ubsan: debug
 
--include *.mk $(DEPENDS)
-.SECONDEXPANSION:
+.PHONY: all
+all: bin/cryptarithmetic bin/test
 
-# Linker call
-$(EXEFILE): $(OBJECTS) | $$(@D)/.
-	$(LD) $(FLAGS) $(INCLUDE) $^ -o $@ $(LIBS)
+# Cryptarithmetic app
+bin/cryptarithmetic: build/cryptarithmetic.o bin/cryptarithms.so bin/matrix.so | bin/.
+	$(CC) -g $(CFLAGS) $^ -o $@
 
-# Compile C source file
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $$(@D)/.
-	$(CC) -c $(FLAGC) $(INCLUDE) -MMD $< -o $@
+build/cryptarithmetic.o: src/cryptarithmetic.c | build/.
+	$(CC) -c -g $(CFLAGS) $< -o $@
 
-# Compile C++ source file
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $$(@D)/.
-	$(XC) -c $(FLAGX) $(INCLUDE) -MMD $< -o $@
+bin/test: build/test.o bin/cryptarithms.so bin/matrix.so| bin/.
+	$(CC) -g $(CFLAGS) $^ -o $@
+
+build/test.o: src/test.c | build/.
+	$(CC) -c -g $(CFLAGS) $< -o $@
+
+# Cryptarithms Library
+bin/cryptarithms.so: build/cryptarithms.o | bin/.
+	$(CC) -shared $^ -o $@
+
+# Matrix Library
+bin/matrix.so: build/matrix.o | bin/.
+	$(CC) -shared $^ -o $@
+
+build/%.o: src/%.c src/%.h | build/.
+	$(CC) -c -fPIC -g $(CFLAGS) $< -o $@
+
 
 # Create a subdirectory if not exists
 .PRECIOUS: %/.
@@ -111,6 +114,9 @@ ifneq ($(INPUTFX),)
 	cpplint --filter=$(LINTX) $(INPUTFX)
 endif
 
+clean:
+	rm -rf $(IGNORES)
+
 run: $(EXEFILE)
 	$(EXEARGS)
 
@@ -122,9 +128,6 @@ helgrind: $(EXEFILE)
 
 gitignore:
 	echo $(IGNORES) | tr " " "\n" > .gitignore
-
-clean:
-	rm -rf $(IGNORES)
 
 # Install dependencies (Debian)
 instdeps:
