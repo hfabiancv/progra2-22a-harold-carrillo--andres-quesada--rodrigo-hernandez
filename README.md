@@ -370,8 +370,8 @@ bin/cryptarithmetic
   
 ## Parameters
 
-Minimum of 3 strings, i.e. two adding words and the solution (output).  
-After the first word the rest of the words must be accompanied by a + and a blank space, except for the last word.  
+Minimum of 2 strings, i.e. one adding word and the solution (output).  
+After the first word the rest of the words must be accompanied by a "+" and a blank space, except for the last word.  
 The last word must be accompanied by an "=" followed by a blank space.  
 
 ## Examples of program execution
