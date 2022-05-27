@@ -103,22 +103,10 @@ cryptarithms.c
       Create amount unique letters as Count unique letters (words, letters, word count)
       If Words is valid then
         Create digit values as an array of size amount unique letters
-        Create values as an array of size word count
-        If digit values and values != NULL then
+        If digit values != NULL then
           Initialiaze as zero (digit values, amount unique letters)
-          Initialiaze as zero (values, word count)
-          Create amount of permutations as
-          permutation(amount unique letters, max unique elements)
-          Create solutions as 0
-          For permutation = 1; permutation <= amount of permutations; permutation++
-            Find digits values(amount unique letters, digit values)
-            If Values are valid(letters, words digit values, word count) then
-              Convert digits to values(word count, values, digit values, letters, words)
-              If Sum Is Valid(values, word count) then
-                Create max word length as Get Max Word Length(words, word count)
-                Print Solution(values, word count, max word length)
-                Change solutions as solutions + 1
-          Print solutions + " solution(s) found"
+          Find Solutions(amount unique letters, letters,
+          words, digit values, word count)
         Else
           Change error as ERROR_INVALID_ARRAY
       Else
@@ -135,10 +123,9 @@ cryptarithms.c
       For word = 0; word < word count; word++
         Create word length as strlen(words[word])
         For letter index = 0; letter index < word length; letter index++
-          If Letter Is Unique (10, words[word][letter index], letters) == true then
+          If Letter Is Unique (10, words[word][letter index],letters) == true then
             If amount unique letters < 10 then
               letters[amount_unique_letters] = words[word][letter_index]
-            Change amount unique letters as amount unique letter + 1
       return amount unique letters
     return 0
     
@@ -153,6 +140,16 @@ cryptarithms.c
     If amount of unique chars <= 10 then
       return true
     return false
+
+  Procedure Find Solutions
+    Create values as an array of size word count
+      Initialiaze as zero (values, word count)
+      Create amount of permutations as
+      permutation(amount unique letters, max unique elements)
+      Create solutions as 0
+      For permutation = 1; permutation <= amount of permutations; permutation++
+        Find digits values(amount unique letters, digit values)
+      Print solutions + " solution(s) found"
 
   Function Permutation
     If total amount >= used amount
@@ -198,18 +195,26 @@ cryptarithms.c
       return true
     return false
 
+  Procedure Try Solution
+    If Values are valid(letters, words digit values, word count) then
+      Convert digits to values(word count, values, digit values, letters, words)
+      If Sum Is Valid(values, word count) then
+        Create max word length as Get Max Word Length(words, word count)
+        Print Solution(values, word count, max word length)
+        Change solutions as solutions + 1
+
   Function Convert Digits To Value    
     If values and digit values and letter and words and amount words > 0 then
       Initialize as zero(values, amount words)
       For value = 0; value < amount of words; value++
         Create word length as strlen(words[value])
         For digit = 0; digit < word length; digit++
-          Change values[value] as (values[value] * 10) + digit values[Get char position(letters, word[value][digit])]
+          Change values[value] as (values[value] * 10) + 
+          digit values[Get char position(letters, word[value][digit])]
 
   Function Get Char Position
-    If letters then
-      Create letters length as strlen(letters)
-      For index = 0; index < letters length; index++ 
+    If array then
+      For index = 0; index < array length; index++ 
         If array[index] == letter then
           return index
     return -1
@@ -343,7 +348,7 @@ The following sub-sections contain all of the documentation to call the app, as 
 
 ### What is the Cryptarithmetic program
 
-The Cryptarithmetic program is a solution for solving an special kind of mathematic problems called cryptarithms.
+The Cryptarithmetic app is a solution for solving an special kind of mathematic problems called cryptarithms.
 
 Allows to solve cryptoarithms in a much easier and faster way than the traditional way.
 
@@ -357,8 +362,8 @@ Allows to solve cryptoarithms in a much easier and faster way than the tradition
   
 Program can be called with:
 
-```bash
-bin/cryptarithmetic textfile.txt  
+```shell
+bin/cryptarithmetic < textfile.txt  
 bin/cryptarithmetic < tests/testname.txt
 bin/cryptarithmetic
 ```

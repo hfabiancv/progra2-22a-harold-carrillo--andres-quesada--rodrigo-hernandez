@@ -1,6 +1,6 @@
-    21
-  + 81
-   ---
- = 102
+    21 
+  + 81 
+   --- 
+ = 102 
 
-1 solution(s) found 
+1 solution(s) found
