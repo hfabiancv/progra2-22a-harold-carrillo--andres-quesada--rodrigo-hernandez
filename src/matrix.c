@@ -126,7 +126,6 @@ uint64_t element_size) {
   return matrix;
 }
 
-
 void destroy_matrix(void** matrix, const uint64_t rows) {
   if (matrix) {
     for (uint64_t row = 0; row < rows; row++) {

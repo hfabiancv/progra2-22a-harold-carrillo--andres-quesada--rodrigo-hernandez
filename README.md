@@ -359,8 +359,14 @@ Allows to solve cryptoarithms in a much easier and faster way than the tradition
 - Allows to work with as many digits as possible
 
 ## Call instructions
+
+To compile:
+
+```shell
+make
+```
   
-Program can be called with:
+After its compiled the program can be called with:
 
 ```shell
 bin/cryptarithmetic < textfile.txt  
