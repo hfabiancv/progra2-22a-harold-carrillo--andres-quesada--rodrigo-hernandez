@@ -88,7 +88,7 @@ Else
 
 ## Diagram
   
-![Program design](/assets/images/ProgramDesign.jpg "Program design")  
+![Program design](/assets/images/ProgramDesign.jpg "Program design")
 
 ## Algorithm in pseudocode
 

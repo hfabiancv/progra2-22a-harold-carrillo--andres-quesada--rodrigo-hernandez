@@ -1,0 +1,182 @@
+\hypertarget{matrix_8c}{}\doxysection{src/matrix.c File Reference}
+\label{matrix_8c}\index{src/matrix.c@{src/matrix.c}}
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}matrix.\+h\char`\"{}}\newline
+Include dependency graph for matrix.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{matrix_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{matrix_8c_a5446a5bbb68bb93392b04dfbfa0095af}{I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+A\+P\+A\+C\+I\+TY}}~10;
+\begin{DoxyCompactList}\small\item\em The initial capacity of the elements matrix. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{matrix_8c_ab8ba25a9155f61eead3716544b7cb76c}{I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+F\+A\+C\+T\+OR}}~10;
+\begin{DoxyCompactList}\small\item\em The increase factor used while increasing the capacity of the matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{matrix_8c_a028ef746fd27791598c65c1528b4ff3a}{increase\+\_\+capacity}} (struct \mbox{\hyperlink{structmatrix}{matrix}} $\ast$\mbox{\hyperlink{structmatrix}{matrix}})
+\begin{DoxyCompactList}\small\item\em Increase the capacity of the matrix. \end{DoxyCompactList}\item 
+void $\ast$$\ast$ \mbox{\hyperlink{matrix_8c_a0537ee8efcac180ed4de50abda2cd2b3}{create\+\_\+matrix}} (const uint64\+\_\+t rows, const uint64\+\_\+t cols, const uint64\+\_\+t element\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Creates a matrix allocated in dynamic memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{matrix_8c_a67875b08eb3ffd479cab86eadf54e55f}{destroy\+\_\+matrix}} (void $\ast$$\ast$\mbox{\hyperlink{structmatrix}{matrix}}, const uint64\+\_\+t rows)
+\begin{DoxyCompactList}\small\item\em Destroy a matrix allocated in dynamic memory. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{matrix_8c_ad841759b221baa60124bda019e2f5228}{matrix\+\_\+init}} (struct \mbox{\hyperlink{structmatrix}{matrix}} $\ast$\mbox{\hyperlink{structmatrix}{matrix}})
+\begin{DoxyCompactList}\small\item\em Initialize the struct matrix. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{matrix_8c_a5c845f74bfa020c341a7f30431f67647}{matrix\+\_\+uninit}} (struct \mbox{\hyperlink{structmatrix}{matrix}} $\ast$\mbox{\hyperlink{structmatrix}{matrix}})
+\begin{DoxyCompactList}\small\item\em Un-\/initialize the struct matrix. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{matrix_8c_a7e9e95f606bfdc327b38764f265a7083}{matrix\+\_\+append}} (struct \mbox{\hyperlink{structmatrix}{matrix}} $\ast$\mbox{\hyperlink{structmatrix}{matrix}}, char $\ast$element)
+\begin{DoxyCompactList}\small\item\em Appends a new element in struct matrix elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{matrix_8c_ab8ba25a9155f61eead3716544b7cb76c}\label{matrix_8c_ab8ba25a9155f61eead3716544b7cb76c}} 
+\index{matrix.c@{matrix.c}!INCREASE\_FACTOR@{INCREASE\_FACTOR}}
+\index{INCREASE\_FACTOR@{INCREASE\_FACTOR}!matrix.c@{matrix.c}}
+\doxysubsubsection{\texorpdfstring{INCREASE\_FACTOR}{INCREASE\_FACTOR}}
+{\footnotesize\ttfamily \#define I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+F\+A\+C\+T\+OR~10;}
+
+
+
+The increase factor used while increasing the capacity of the matrix. 
+
+\mbox{\Hypertarget{matrix_8c_a5446a5bbb68bb93392b04dfbfa0095af}\label{matrix_8c_a5446a5bbb68bb93392b04dfbfa0095af}} 
+\index{matrix.c@{matrix.c}!INITIAL\_CAPACITY@{INITIAL\_CAPACITY}}
+\index{INITIAL\_CAPACITY@{INITIAL\_CAPACITY}!matrix.c@{matrix.c}}
+\doxysubsubsection{\texorpdfstring{INITIAL\_CAPACITY}{INITIAL\_CAPACITY}}
+{\footnotesize\ttfamily \#define I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+A\+P\+A\+C\+I\+TY~10;}
+
+
+
+The initial capacity of the elements matrix. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{matrix_8c_a0537ee8efcac180ed4de50abda2cd2b3}\label{matrix_8c_a0537ee8efcac180ed4de50abda2cd2b3}} 
+\index{matrix.c@{matrix.c}!create\_matrix@{create\_matrix}}
+\index{create\_matrix@{create\_matrix}!matrix.c@{matrix.c}}
+\doxysubsubsection{\texorpdfstring{create\_matrix()}{create\_matrix()}}
+{\footnotesize\ttfamily void $\ast$$\ast$ create\+\_\+matrix (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{rows,  }\item[{const uint64\+\_\+t}]{cols,  }\item[{const uint64\+\_\+t}]{element\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Creates a matrix allocated in dynamic memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & Amount of rows of the matrix \\
+\hline
+{\em cols} & Amount of cols of the matrix \\
+\hline
+{\em element\+\_\+size} & Size of the element, i.\+e, datatype contained in the 2D matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A dynamic allocated matrix 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8c_a67875b08eb3ffd479cab86eadf54e55f}\label{matrix_8c_a67875b08eb3ffd479cab86eadf54e55f}} 
+\index{matrix.c@{matrix.c}!destroy\_matrix@{destroy\_matrix}}
+\index{destroy\_matrix@{destroy\_matrix}!matrix.c@{matrix.c}}
+\doxysubsubsection{\texorpdfstring{destroy\_matrix()}{destroy\_matrix()}}
+{\footnotesize\ttfamily void destroy\+\_\+matrix (\begin{DoxyParamCaption}\item[{void $\ast$$\ast$}]{matrix,  }\item[{const uint64\+\_\+t}]{rows }\end{DoxyParamCaption})}
+
+
+
+Destroy a matrix allocated in dynamic memory. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{matrix_8c_a0537ee8efcac180ed4de50abda2cd2b3}{create\+\_\+matrix}} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em matrix} & An array of vectors. \\
+\hline
+{\em rows} & amount of rows of the matrix \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{matrix_8c_a028ef746fd27791598c65c1528b4ff3a}\label{matrix_8c_a028ef746fd27791598c65c1528b4ff3a}} 
+\index{matrix.c@{matrix.c}!increase\_capacity@{increase\_capacity}}
+\index{increase\_capacity@{increase\_capacity}!matrix.c@{matrix.c}}
+\doxysubsubsection{\texorpdfstring{increase\_capacity()}{increase\_capacity()}}
+{\footnotesize\ttfamily int increase\+\_\+capacity (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmatrix}{matrix}} $\ast$}]{matrix }\end{DoxyParamCaption})}
+
+
+
+Increase the capacity of the matrix. 
+
+Creates a new matrix with an increased capacity that will contain all of the data in the actual elements matrix. \begin{DoxyReturn}{Returns}
+{\ttfamily E\+X\+I\+T\+\_\+\+S\+U\+C\+C\+E\+SS} if it correctly creates a new matrix with an increased capacity 
+
+{\ttfamily E\+X\+I\+T\+\_\+\+F\+A\+I\+L\+U\+RE} if it fails creating the new matrix 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8c_a7e9e95f606bfdc327b38764f265a7083}\label{matrix_8c_a7e9e95f606bfdc327b38764f265a7083}} 
+\index{matrix.c@{matrix.c}!matrix\_append@{matrix\_append}}
+\index{matrix\_append@{matrix\_append}!matrix.c@{matrix.c}}
+\doxysubsubsection{\texorpdfstring{matrix\_append()}{matrix\_append()}}
+{\footnotesize\ttfamily int matrix\+\_\+append (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmatrix}{matrix}} $\ast$}]{matrix,  }\item[{char $\ast$}]{element }\end{DoxyParamCaption})}
+
+
+
+Appends a new element in struct matrix elements. 
+
+Adds a new row to the matrix. If it doesnt have enough capacity it will call {\itshape increase\+\_\+capacity} to create a new matrix with an increased size 
+\begin{DoxyParams}{Parameters}
+{\em matrix} & Structure of struct matrix \\
+\hline
+{\em element} & The new element to be added \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily E\+X\+I\+T\+\_\+\+S\+U\+C\+C\+E\+SS} if it adds the new element 
+
+{\ttfamily E\+X\+I\+T\+\_\+\+F\+A\+I\+L\+U\+RE} if it fails while adding the new element 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8c_ad841759b221baa60124bda019e2f5228}\label{matrix_8c_ad841759b221baa60124bda019e2f5228}} 
+\index{matrix.c@{matrix.c}!matrix\_init@{matrix\_init}}
+\index{matrix\_init@{matrix\_init}!matrix.c@{matrix.c}}
+\doxysubsubsection{\texorpdfstring{matrix\_init()}{matrix\_init()}}
+{\footnotesize\ttfamily int matrix\+\_\+init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmatrix}{matrix}} $\ast$}]{matrix }\end{DoxyParamCaption})}
+
+
+
+Initialize the struct matrix. 
+
+Dynamically allocates elements array in memory and assigns count as 0 and capacity as I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+A\+P\+A\+C\+I\+TY 
+\begin{DoxyParams}{Parameters}
+{\em matrix} & Structure of struct matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily E\+X\+I\+T\+\_\+\+S\+U\+C\+C\+E\+SS} if it initializes the struct correctly 
+
+{\ttfamily E\+X\+I\+T\+\_\+\+F\+A\+I\+L\+U\+RE} if it fails while doing the initialization process 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8c_a5c845f74bfa020c341a7f30431f67647}\label{matrix_8c_a5c845f74bfa020c341a7f30431f67647}} 
+\index{matrix.c@{matrix.c}!matrix\_uninit@{matrix\_uninit}}
+\index{matrix\_uninit@{matrix\_uninit}!matrix.c@{matrix.c}}
+\doxysubsubsection{\texorpdfstring{matrix\_uninit()}{matrix\_uninit()}}
+{\footnotesize\ttfamily int matrix\+\_\+uninit (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmatrix}{matrix}} $\ast$}]{matrix }\end{DoxyParamCaption})}
+
+
+
+Un-\/initialize the struct matrix. 
+
+Destroys elements matrix, and set count and capacity as 0 
+\begin{DoxyParams}{Parameters}
+{\em matrix} & Structure of struct matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily E\+X\+I\+T\+\_\+\+S\+U\+C\+C\+E\+SS} if it un-\/initializes the struct correctly 
+
+{\ttfamily E\+X\+I\+T\+\_\+\+F\+A\+I\+L\+U\+RE} if it fails while doing the un-\/initialization process 
+\end{DoxyReturn}
