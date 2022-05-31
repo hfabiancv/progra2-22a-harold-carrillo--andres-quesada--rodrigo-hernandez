@@ -1,4 +1,6 @@
 // Copyright 2022 Harold Carrillo Valverde <HAROLD.CARRILLO@ucr.ac.cr>
+// Modified example of Dynamic Growing Array
+// from Jeisson Hidalgo Cespedes.
 #ifndef MATRIX_H
 #define MATRIX_H
 
