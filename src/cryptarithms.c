@@ -209,6 +209,17 @@ enum error_t try_solution(char* letters, char** words,
 uint64_t* digit_values, uint64_t* values, uint64_t word_count,
 uint64_t* solutions);
 
+/**
+ * @brief Writes every solution found in a binary file
+ * @details Appends values array elements at the end of a binary file, named output.bin
+ * @see convert_digits_to_value
+ * @return ERROR_CANNOT_OPEN_FILE if it cannot open the file
+ * @return ERROR_INVALID_ARRAY If values array is not NULL
+ * @return ERROR_SUCCESS if it successfully appends data in the binary file
+ */
+enum error_t append_output_binary(const uint64_t* values,
+const uint64_t word_count);
+
 
 // Procedure Solve Cryptarithm
 enum error_t solve_cryptarithm(char** words, uint64_t word_count) {
@@ -309,6 +320,7 @@ char** words, uint64_t* digit_values, uint64_t word_count) {
     amount_unique_letters);
     // Create solutions as 0
     uint64_t solutions = 0;
+    remove("output.bin");
     for (uint64_t permutation = 1; permutation <= amount_permutations;
     permutation++) {
       error = find_digits_values(amount_unique_letters, digit_values);
@@ -316,7 +328,7 @@ char** words, uint64_t* digit_values, uint64_t word_count) {
         error = try_solution(letters, words, digit_values, values,
         word_count, &solutions);
       } else {
-        return error;
+        break;
       }
     }
     free(values);
@@ -418,6 +430,9 @@ uint64_t* solutions) {
         size_t max_word_length = get_max_word_length(words, word_count);
         // Print Solution(amount of words, values, max word length)
         error = print_solution(values, word_count, max_word_length);
+        if (error == ERROR_SUCCESS) {
+          error = append_output_binary(values, word_count);
+        }
         *(solutions) += 1;
       }
     }
@@ -523,4 +538,25 @@ const size_t max_word_length) {
     return ERROR_SUCCESS;
   }
   return ERROR_PRINT_UNSUCCESSFUL;
+}
+
+enum error_t append_output_binary(const uint64_t* values,
+const uint64_t word_count) {
+  enum error_t error = ERROR_SUCCESS;
+  if (values) {
+    FILE *append_ptr;
+    append_ptr = fopen("output.bin", "ab");
+    if (!append_ptr) {
+      error = ERROR_CANNOT_OPEN_FILE;
+    }
+    if (error == ERROR_SUCCESS) {
+      for (uint64_t index = 0; index < word_count; index++) {
+        fwrite(&values[index], sizeof(index), 1, append_ptr);
+      }
+      fclose(append_ptr);
+    }
+  } else {
+    error = ERROR_INVALID_ARRAY;
+  }
+  return error;
 }
