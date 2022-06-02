@@ -14,7 +14,8 @@
  * @param words Array that contains every string or word in the cryptarithm
  * @param amount_words The amount of strings or words.
  * @return @c ERROR_INVALID_DIGITS if @a letter_values array is not valid
- * @return @c ERROR_PRINT_UNSUCCESSFUL if word_values is not valid or is empty, so it can't print anything.
+ * @return @c ERROR_PRINT_UNSUCCESSFUL if word_values is not valid
+ * or is empty, so it can't print anything.
  * @return @c ERROR_SUCCESS if doesnt fail while looking for a possible solution
  */
 enum error_t find_solutions(uint64_t amount_unique_letters, char* letters,
@@ -23,7 +24,8 @@ char** words, uint64_t* letter_values, uint64_t amount_words);
 /**
  * @brief Checks if all of the letters word_values are unique
  * @param letter_values Array that contains all of the digits, or letter values
- * @param amount_unique_letters Amount of digits, (letter values) @a letter_values size
+ * @param amount_unique_letters Amount of digits,
+ * (letter values) @a letter_values size
  * @return true if all digits (letters word_values) are different from each other
  * @return false if there is a repeated digit value
  */
@@ -51,7 +53,8 @@ uint64_t* solutions);
 
 /**
  * @brief Writes every solution found in a binary file
- * @details Appends word_values array elements at the end of a binary file, named output.bin
+ * @details Appends word_values array elements at the
+ * end of a binary file, named output.bin
  * @see convert_digits_to_value
  * @return ERROR_CANNOT_OPEN_FILE if it cannot open the file
  * @return ERROR_INVALID_ARRAY If word_values array is not NULL
@@ -241,8 +244,10 @@ bool digit_validator(uint64_t* letter_values, uint64_t amount_unique_letters) {
     if (amount_unique_letters == 1) {
       return true;
     }
-    for (uint64_t actual_index = 0; actual_index < amount_unique_letters; actual_index++) {
-      for (uint64_t next_index = actual_index + 1; next_index < amount_unique_letters; next_index++) {
+    for (uint64_t actual_index = 0; actual_index <
+    amount_unique_letters; actual_index++) {
+      for (uint64_t next_index = actual_index + 1; next_index <
+      amount_unique_letters; next_index++) {
         if (letter_values[actual_index] == letter_values[next_index]) {
           return false;
         }
@@ -311,8 +316,9 @@ uint64_t amount_words) {
 }
 
 // Function Convert Digits To Value
-enum error_t convert_digits_to_value(const uint64_t amount_words,
-uint64_t* word_values, const uint64_t* letter_values, char* letters, char** words) {
+enum error_t convert_digits_to_value(const uint64_t amount_words
+, uint64_t* word_values, const uint64_t* letter_values, char* letters
+, char** words) {
   if (word_values && letter_values && letters && words && amount_words > 0) {
     fill_array_zero(word_values, amount_words);
     // For value = 0; value < amount of words; value++
@@ -322,7 +328,8 @@ uint64_t* word_values, const uint64_t* letter_values, char* letters, char** word
       // For digit = 0; digit < word lenght; digit++
       for (uint64_t digit = 0; digit < word_length; digit++) {
         uint64_t digit_index = get_char_position(letters, words[value][digit]);
-        word_values[value] = (word_values[value] * 10) + letter_values[digit_index];
+        word_values[value] = (word_values[value] * 10) +
+         letter_values[digit_index];
       }
     }
     return ERROR_SUCCESS;
@@ -372,8 +379,8 @@ size_t get_max_word_length(char** words, const uint64_t amount_words) {
 }
 
 // Procedure Print Solution
-enum error_t print_solution(const uint64_t* word_values, const uint64_t amount_words,
-const size_t max_word_length) {
+enum error_t print_solution(const uint64_t* word_values,
+const uint64_t amount_words, const size_t max_word_length) {
   // Print word_values[0]
   if (word_values && amount_words > 0) {
     printf("%3s%*"PRIu64" \n", "", (int)max_word_length, word_values[0]);
