@@ -99,9 +99,9 @@ bool words_is_valid(const int amount_unique_letters);
  * @details This function uses the following formula:
  * \f$\frac{n!}{(n-r)!}\f$ \n
  * @example permutation permutation(7,4) == 840
- * @param total_amount-The amount total amount of objects
+ * @param total_amount The amount total amount of objects
  * (things, numbers, letters, etc.) we can use.
- * @param used_amount-The amount of objects we are willing to use.
+ * @param used_amount The amount of objects we are willing to use.
  * @return The result of the permutation
  */
 uint64_t permutation(const uint64_t total_amount, const uint64_t used_amount);
@@ -154,7 +154,7 @@ enum error_t convert_digits_to_value(const uint64_t amount_words
  * @details Traverses an array to check that the given character 
  * is not found in it
  * @see convert_digits_to_value
- * @param letter-A certain character.
+ * @param letter A certain character.
  * @return The index of the array in which the character was found.
  * @return -1 if it didn't find that character in the array
  */
