@@ -11,12 +11,16 @@
 /**
  * @mainpage
  * Library for solving verbal artihmetic or "cryptarithms".
+ * @date may 2022
+ * @authors Harold Castillo, Andres Quesada & Rodrigo Hernandez.
+ * 
+ * 
+ * ###Header files
  * 1. @a cryptarithms.h
  * 2. @a matrix.h
  *
- * Sample:
- * @include {doc} cryptarithmetic.c
- * 
+ * ###Calling matrix.h and cryptarithms.h
+ * @snippet <cryptarithmetic.c
  * 
  */
 
@@ -64,7 +68,7 @@ int count_unique_letters(char** words, char* letters, uint64_t amount_words);
 /**
  * @brief Checks if a letter is unique
  * @details Checks if a letter in not repeated in the letters array
- * @example is_letter_unique(4, 'Q', "HELLO")== true, 
+ * @example is_letter_unique is_letter_unique(4, 'Q', "HELLO")== true, 
  * is_letter_unique(4, 'O', "HELLO")== false
  * @see convert_digits_to_value, get_char_position
  * @param amount_unique_letters Quantity of different
@@ -93,8 +97,8 @@ bool words_is_valid(const int amount_unique_letters);
  * 
  * @brief Calculates a permutation using the mathematic formula.
  * @details This function uses the following formula:
- * \f$\frac{n!}{(n-r)!}\f$
- * @example permutation(7,4) == 840
+ * \f$\frac{n!}{(n-r)!}\f$ \n
+ * @example permutation permutation(7,4) == 840
  * @param total_amount-The amount total amount of objects
  * (things, numbers, letters, etc.) we can use.
  * @param used_amount-The amount of objects we are willing to use.
@@ -115,7 +119,7 @@ uint64_t factorial(uint64_t number);
  * @details Finds a possible combination with the digits following 
  * the same logic as decimal counting, with the exception that 
  * it must not have repeated values
- * @example 
+ * @code{.c}
  * amount_unique_letters == 4;
  * letters_values == {0,0,0,0}
  * find_digits_values(amount_unique_letters, letters_values)
@@ -124,6 +128,7 @@ uint64_t factorial(uint64_t number);
  * letters_values == {0,1,2,4}
  * find_digits_values(amount_unique_letters, letters_values)
  * letters_values == {0,1,2,5}
+ * @endcode
  * @see convert_digits_to_value
  * @returns @a ERROR_SUCCESS if there's digits, else @a ERROR_INVALID_DIGITS.
  */
@@ -133,8 +138,6 @@ enum error_t find_digits_values(const uint64_t amount_unique_letters
 /**
  * @brief Takes an array with numbers separed in digits, unite 
  * the digits(of a vector) into a number and store it into another array.
- * @code{.c}
- * @endcode
  * @param amount_words Quantity of words stored in words.
  * @param word_values Array to store the word_values we get.
  * @param letter_values Array with given permutations of numbers between 0-9.
