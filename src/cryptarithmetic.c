@@ -3,36 +3,6 @@
 #include "cryptarithms.h"
 #include "matrix.h"
 
-/*
-Cryptarithmetic File
- 
-  Procedure main
-    Create struct array array
-    Array init(&array)
-    Read Values(&array)
-    If error == EXIT SUCCESS then
-     Solve Cryptarithm(array.elements, array.count)
-    Array Uninit(&array)
-    return error
-
-  Procedure Read Values
-    Create value as an char array of size 21
-    Create error as EXIT SUCCESS
-    If value != NULL then
-      If there is data
-        Read value
-        Array Append(values, value)
-      While there is data
-        Read value
-        Array append(values, value)
-      If there is data
-        Read values
-        Array append(values ,value)
-    Else
-      Change error as EXIT FAILURE
-    return error
-*/
-
 /**
  * @brief Reads values for the struct matrix
  * @details Reads all of the words to be append in the struct matrix
@@ -50,8 +20,10 @@ int main() {
   struct matrix matrix;
   error = matrix_init(&matrix);
   if (error == EXIT_SUCCESS) {
+    /// Read a cryptarithm given by the user
     error = read_values(&matrix);
     if (error == ERROR_SUCCESS) {
+      /// Solve the cryptarithm previously read
       error = solve_cryptarithm(matrix.elements, matrix.count);
 
     } else if (error == ERROR_READ_VALUES) {
@@ -76,9 +48,11 @@ enum error_t read_values(struct matrix* values) {
       error = ERROR_READ_VALUES;
     }
     if (error == ERROR_SUCCESS) {
+      /// Read all of the addends in the cryptarithm
       while (scanf("+ %19s ", value) == 1) {
         matrix_append(values, value);
       }
+      /// Read the output (result) of the cryptarithm
       if (scanf("= %19s", value) == 1) {
         matrix_append(values, value);
       } else {

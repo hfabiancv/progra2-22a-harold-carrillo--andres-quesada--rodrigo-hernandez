@@ -7,13 +7,13 @@ cryptarithms.c
     Create max unique elements as 10
     Create letters as an array of chars with size max unique elements
     If letters != NULL then
-      Create amount unique letters as Count unique letters (words, letters, word count)
+      Create amount unique letters as Count unique letters (words, letters, amount words)
       If Words is valid then
-        Create digit values as an array of size amount unique letters
-        If digit values != NULL then
-          Initialiaze as zero (digit values, amount unique letters)
+        Create letter values as an array of size amount unique letters
+        If letter values != NULL then
+          Initialiaze as zero (letter values, amount unique letters)
           Find Solutions(amount unique letters, letters,
-          words, digit values, word count)
+          words, letter values, amount words)
         Else
           Change error as ERROR_INVALID_ARRAY
       Else
@@ -27,12 +27,12 @@ cryptarithms.c
     If words != NULL then
       Change letters[0] as ' '
       Create amount of unique letters as 0
-      For word = 0; word < word count; word++
+      For word = 0; word < amount words; word++
         Create word length as strlen(words[word])
         For letter index = 0; letter index < word length; letter index++
           If Letter Is Unique (10, words[word][letter index],letters) == true then
             If amount unique letters < 10 then
-              letters[amount_unique_letters] = words[word][letter_index]
+              Change letters[amount unique letters] as words[word][letter_index]
       return amount unique letters
     return 0
     
@@ -49,16 +49,16 @@ cryptarithms.c
     return false
 
   Procedure Find Solutions
-    Create values as an array of size word count
-      Initialiaze as zero (values, word count)
-      Create amount of permutations as
-      permutation(amount unique letters, max unique elements)
-      Create solutions as 0
-      For permutation = 1; permutation <= amount of permutations; permutation++
-        Find digits values(amount unique letters, digit values)
-      Print solutions + " solution(s) found"
+    Create word values as an array of size amount words
+    Initialiaze as zero (word values, amount words)
+    Create amount of permutations as
+    Permutation With No Repetition(amount unique letters, max unique elements)
+    Create solutions as 0
+    For permutation = 1; permutation <= amount of permutations; permutation++
+      Find digits values(amount unique letters, letter values)
+    Print solutions + " solution(s) found"
 
-  Function Permutation
+  Function Permutation With No Repetition
     If total amount >= used amount
       return factorial(n) / factorial (n - r)
     return 0
@@ -70,25 +70,25 @@ cryptarithms.c
     return result
 
   Procedure Find Digits values
-    If digit values and amount unique letters > 0 then
+    If letter values and amount unique letters > 0 then
       Create index as amount of unique chars - 1
-      Change digit values[index] as digit values[index] + 1
-      If digit values[index] == 10 then
-        Change digit values[index] as 0
+      Change letter values[index] as letter values[index] + 1
+      If letter values[index] == 10 then
+        Change letter values[index] as 0
         If amount unique letters > 1
-          Carry(digit values, index - 1)
+          Carry(letter values, index - 1)
       While Digit validator == false
-        Change digit values[index] as digit values[index] + 1
-          If digit values[index] == 10 then
-            Change digit values[index] as 0
-            Carry(digit values, index - 1)
+        Change letter values[index] as letter values[index] + 1
+          If letter values[index] == 10 then
+            Change letter values[index] as 0
+            Carry(letter values, index - 1)
 
   Function Carry
-    If digit values != NULL
-      Change digit values[index] as digit values[index] + 1
-        If digit values[index] == 10
-          Change digit values[index] as 0
-          Carry(digit values, index - 1)
+    If letter values != NULL
+      Change letter values[index] as letter values[index] + 1
+        If letter values[index] == 10
+          Change letter values[index] as 0
+          Carry(letter values, index - 1)
         return ERROR_SUCCESS
     return ERROR_INVALID_DIGITS
 
@@ -103,21 +103,21 @@ cryptarithms.c
     return false
 
   Procedure Try Solution
-    If Values are valid(letters, words digit values, word count) then
-      Convert digits to values(word count, values, digit values, letters, words)
-      If Sum Is Valid(values, word count) then
-        Create max word length as Get Max Word Length(words, word count)
-        Print Solution(values, word count, max word length)
+    If Values are valid(letters, words, letter values, amount words) then
+      Convert digits to values(amount words, word values, letter values, letters, words)
+      If Sum Is Valid(word values, amount words) then
+        Create max word length as Get Max Word Length(words, amount words)
+        Print Solution(word values, amount words, max word length)
         Change solutions as solutions + 1
 
   Function Convert Digits To Value    
-    If values and digit values and letter and words and amount words > 0 then
-      Initialize as zero(values, amount words)
+    If values and letter values and letter and words and amount words > 0 then
+      Initialize as zero(word values, amount words)
       For value = 0; value < amount of words; value++
         Create word length as strlen(words[value])
         For digit = 0; digit < word length; digit++
-          Change values[value] as (values[value] * 10) + 
-          digit values[Get char position(letters, word[value][digit])]
+          Change word values[value] as (word values[value] * 10) + 
+          letter values[Get char position(letters, word[value][digit])]
 
   Function Get Char Position
     If array then
@@ -127,17 +127,17 @@ cryptarithms.c
     return -1
 
   Function Values are Valid
-    For word = 0; word < word count; word++
+    For word = 0; word < amount words; word++
       Create digit index as Get Char Position(letters, words[word][0])
-      If digit values[digit index] == 0 then
+      If letter values[digit index] == 0 then
         return false
     return true
 
   Function Sum is Valid
     Create sum as 0
     For index = 0; index < amount of words - 1; index++
-      Change sum as sum + values[index]
-    If sum == values[amount of words - 1] then
+      Change sum as sum + word values[index]
+    If sum == word values[amount of words - 1] then
       return true
     return false
 
@@ -149,14 +149,29 @@ cryptarithms.c
     return max size
   
   Procedure Print Solution
-    If values and amount words > 0
-      Print values[0]
+    If word values != NULL and amount words > 0
+      Print word values[0]
       For index = 1; index < amount of words - 1; index++
         Print " + "
-        Print values[index]
+        Print word values[index]
       For counter = 0; counter < max num size; counter++
         Print " - "
-      Print values[amount of words - 1]
+      Print word values[amount of words - 1]
+  
+  Procedure Append Output Binary
+    Create error as ERROR_SUCCESS
+    If word values then
+      Create append pointer as pointer to a FILE
+      Change append pointer as fopen("output.bin", "ab");
+      If append pointer == NULL then
+        Change error as ERROR_CANNOT_OPEN_FILE
+      If error == ERROR_SUCCESS then
+        For index = 0; index < word_count; index++ 
+          fwrite(word values[index], sizeof(index), 1, append_ptr);
+        fclose(append_ptr);
+    Else 
+      Change error as ERROR_INVALID_ARRAY;
+    return error     
   
   
 cryptarithmetic.c
@@ -186,7 +201,6 @@ cryptarithmetic.c
     Else
       Change error as EXIT FAILURE
     return error
-
   
 matrix.c
 

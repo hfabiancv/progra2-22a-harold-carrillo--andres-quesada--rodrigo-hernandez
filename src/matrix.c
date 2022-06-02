@@ -9,58 +9,6 @@
 
 #include "matrix.h"
 
-/*
-Matrix File
-
-  Procedure matrix Init
-    Change matrix->count as 0
-    Change matrix->capacity as INITIAL_CAPACITY
-    Change matrix->elements as Create Matrix
-    If matrix->elements == NULL
-      Change matrix capacity as 0
-
-  Procedure matrix Uninit
-    Destroy Matrix(matrix->elements, matrix->capacity)
-    Change matrix->count as 0
-    Change matrix->capacity as 0
-
-  Procedure Create Matrix
-    Create matrix as an matrix of rows
-    If matrix then
-      For row = 0; row < rows; row++
-        Create matrix[row] as an matrix of cols
-        If matrix[row] == NULL
-          Destroy matrix(matrix, rows)
-          return NULL
-    return matrix
-
-  Procedure Destroy Matrix
-    If matrix != NULL then
-      For row = 0; row < rows; row++
-        free(matrix[row])
-      free(matrix) 
-      
-  Procedure matrix Append
-    If matrix->count == matrix->capacity then
-      Increase Capacity(matrix)
-    Create element length as strlen(element)
-    For index= 0; index < element_length; index++
-      Change matrix->elements[matrix->count][index] as element[index]
-    Change matrix->count as matrix->count + 1
-
-  Procedure increase capacity
-    Create new capacity as INCREASE_FACTOR * matrix->capacity
-    Create new elements as Create Matrix
-    If new elements != NULL then
-      For row = 0; row < matrix->count; row++
-        Create element length as strlen(matrix->elements[row])
-        For column = 0; column < element length; column++
-          Change new elements[row][column] as matrix->elements[row][column]
-      Destroy Matrix
-      matrix->elements = new elements
-      matrix->capacity = new capacity
-*/
-
 /// The initial capacity of the elements matrix
 #define INITIAL_CAPACITY 10;
 /// The increase factor used while increasing the capacity of the matrix
@@ -101,8 +49,9 @@ int matrix_init(struct matrix* matrix) {
   const int cols_capacity = 20;
   matrix->count = 0;
   matrix->capacity = INITIAL_CAPACITY;
-  matrix->elements = (char**) create_matrix(matrix->capacity, cols_capacity,
-  sizeof(char*));
+  matrix->elements = (char**) create_matrix(matrix->capacity, cols_capacity
+  , sizeof(char*));
+
   if (matrix->elements == NULL) {
     matrix->capacity = 0;
     error = EXIT_FAILURE;

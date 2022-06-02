@@ -24,7 +24,7 @@ typedef struct matrix matrix_t;
  * @brief Initialize the struct matrix
  * @details Dynamically allocates elements array in memory and assigns count as 0 and capacity as
  * INITIAL_CAPACITY
- * @param matrix Structure of struct matrix.
+ * @param matrix Structure of struct matrix. Contains a count, capacity, and a 2D array of chars
  * @return @c EXIT_SUCCESS if it initializes the struct correctly
  * @return @c EXIT_FAILURE if it fails while doing the initialization process
  */
